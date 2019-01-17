@@ -1,4 +1,6 @@
 function BMICalculator(){
+  this.bmiValue = 26.01;
+  this.bmiMessage = "Overweight";
 };
 
 function setBMIMessage (obj){
