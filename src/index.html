@@ -2,15 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title> 
+    <title>BMI Calculator</title> 
     <script src="js/person.js"></script>
     <script src="js/calculator.js"></script>
+    <style>
+        body {
+            margin: 0 auto;
+            width: 800px;
+            padding-top: 20px;
+        }
+
+
+        #title {
+            padding-top: 60px;
+        }
+
+        p {
+            font-size: 19px;
+            font-family: sans-serif;
+        }
+
+        #weightinkgs {
+            border: 2px solid #308cb8;
+            width: 500px;
+            padding: 2px;
+            height: 25px;
+            text-indent: 9px;
+            font-size: 14px;
+        }
+
+        #heightincm {
+            border: 2px solid #308cb8;
+            width: 500px;
+            padding: 2px;
+            height: 25px;
+            text-indent: 9px;
+            font-size: 14px;
+        }
+
+        button {
+            margin-top: 20px;
+            margin-bottom: 29px;
+            background: #3b85a7;
+            padding: 4px 14px;
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+        }
+
+    </style>
 </head>
 <body>
+
     <form id="calculate">
+        <h1 id="title">BMI Calculator </h1>
         <div id="metric-inputs">
-            <input type="text" id="weight-in-kgs" placeholder="Weight">
-            <input type="text" id="height-in-cm" placeholder="Height">
+            <p id="titleweight">Your weight(kg)</p>
+            <input type="text" id="weightinkgs" placeholder="your weight...">
+            <p id="titleheight">Your height(cm)</p>
+            <input type="text" id="heightincm" placeholder="your height...">
         </div>
 
         <button type="submit" value="Calculate"> Calculate </button>
@@ -32,15 +82,15 @@
                 calculateBMI()
                     .then(person => {
                         global.displayValueElement.innerHTML = `Your BMI is ${person.bmiValue}`;
-                        global.displayMessageElement.innerHTML = `and you are ${person.bmiMessage}`;
+                        global.displayMessageElement.innerHTML = `and your tatus is ${person.bmiMessage}`;
                     })
             })
         });
 
         const calculateBMI = () => {
             return new Promise(resolve => {
-                let w = parseFloat(document.getElementById('weight-in-kgs').value);
-                let h = parseFloat(document.getElementById('height-in-cm').value);
+                let w = parseFloat(document.getElementById('weightinkgs').value);
+                let h = parseFloat(document.getElementById('heightincm').value);
                 let person = new Person({
                     weight: w,
                     height: h,
